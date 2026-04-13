@@ -1,0 +1,35 @@
+a. Difference between List and Dictionary of Python:-
+=> 
+# List -> In pyhton, a list is an ordered collection. The list is mutable, that mean, any item of the list can be changeable. In list an element can access by index. the index is starting from zero. List is written within square brackets []. Lists allow duplicate values.
+Example: numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+# Dictionary -> In python, a Dictionary stores data as key value pair. The Dictionary is also mutable. The Dictionary values can be access by their keys. Dictionary is written within curly brace {}.
+Example: person = {"name": "Munim", "age": 24}
+
+
+b. *args and **kwargs of Python:-
+=> In python, *args and **kwargs are used when don't know how many arguments will be passed in the function. They make the function more flexible.
+
+# *args -> *args allows a function to accepts multiple arguments. These arguments are stored as a tuple.
+Example: 
+       " def all_sum(*numbers):
+            sum = 0
+            for num in numbers:
+                sum += num
+            return sum
+            
+        total = all_sum(45, 46, 89, 11, 81)
+        print('all sum: ', total) "
+
+
+# **kwargs -> **kwargs allows a function to accepts multiple key value pairs arguments. These are stored as a Dictionary.
+Example:
+        def famous_name(first, last, **addition):
+            name = f'{first} {last}'
+            for key, value in addition.items():
+                print(key, value)
+            return name
+
+        name = famous_name(first='taher', last='ali', title='hujur', title2='halim', last2='khamu', addition='shayokh')
+        print(name)
