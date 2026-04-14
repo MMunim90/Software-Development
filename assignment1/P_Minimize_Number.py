@@ -1,15 +1,27 @@
 num = int(input())
+user_input = input().split()
+
+half = lambda num : num/2
+
 numbers = []
-number = input()
+count = 0
 
-for i in number:
-    n = int()
-    numbers.append(n)
+for number in user_input:
+    if number != " ":
+        n = int(number)
+        numbers.append(n)
+    
+all_even = True
 
-# while num > 0:
-#     number = int(input())
-#     numbers.append(number)
-#     num -= 1
+while all_even != False:
+    for number in numbers:
+        if number % 2 != 0:
+            all_even = False
+            break
+    if all_even == False:
+        break
+    numbers = list(map(half, numbers))
+    count += 1
+    
+print(count)
 
-for n in numbers:
-    print(type(n))
