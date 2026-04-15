@@ -21,3 +21,6 @@ mul = calculate.multiply(5, 6)
 div = calculate.divide(30, 5)
 
 print(sum, sub, mul, div)
+
+print(isinstance(calculate, Calculator)) # True
+# print(isinstance(sum, Calculator))  # False
