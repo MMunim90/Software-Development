@@ -6,9 +6,26 @@ class Shopping:
     def add_to_cart(self, item, price, quantity):
         product = {'item': item, 'price': price, 'quantity': quantity}
         self.cart.append(product)
+        
+    def show_cart_item(self):
+        for i, item in enumerate(self.cart):
+            print(f'item number: {i}, item: {item['item']}, price: {item['price']}, quantity: {item['quantity']}')
     
-    def remove_item(self, item):
-        pass
+    def remove_item(self):
+        self.show_cart_item()
+        item = int(input('Type item number you want to remove: '))
+        if self.cart.__len__() <= item:
+            print('This item is not available in the list')
+        else:
+            print(f'If you want to remove {self.cart[item]['item']} item from the cart, type \'confirm\'')
+            conf = input()
+            if conf == 'confirm':
+                print(f'{self.cart[item]['item']} is removed from the cart')
+                del self.cart[item]
+                print('Remaining cart item: ')
+                self.show_cart_item()
+            else:
+                print('Character mismatch, try again!')
         
     def total_price(self):
         total = 0
@@ -36,4 +53,6 @@ munim.add_to_cart('rice', 50, 5)
 # print(munim.cart)
 
 # munim.total_price()
-munim.checkout(1000)
+# munim.checkout(1000)
+munim.remove_item()
+# munim.show_cart_item()

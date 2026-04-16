@@ -27,7 +27,7 @@ class Exam:
         return time
     
     def get_marks(self):
-        print(f'Wow!!! {self.examinee} You did outstanding. Your obtained mark\'s is: {randint(70, 100)}')
+        print(f'Wow!!! {self.examinee}, You did outstanding. Your obtained mark\'s is: {randint(70, 100)}')
         
 munim = Exam('munim')
 # munim.exam_subjects()
