@@ -1,0 +1,36 @@
+from math import pi
+
+class Shape:
+    def __init__(self, name):
+        self.name = name
+        
+class Rectangle(Shape):
+    def __init__(self, name, length, width):
+        self.length = length
+        self.width = width
+        super().__init__(name)
+        
+    def area(self):
+        return self.length * self.width
+    
+class Circle(Shape):
+    def __init__(self, name, radius):
+        self.radius = radius
+        super().__init__(name)
+        
+    def area(self):
+        return pi * self.radius * self.radius
+    
+class Triangle(Shape):
+    def __init__(self, name, base, height):
+        self.base = base
+        self.height = height
+        super().__init__(name)
+        
+    def area(self):
+        return 0.5 * self.base * self.height
+    
+
+rect = Rectangle('rectangle', 3, 4)
+print(rect.name)
+print(rect.area())
