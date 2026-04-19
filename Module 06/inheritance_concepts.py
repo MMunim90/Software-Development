@@ -12,4 +12,6 @@ class DerivedClass(BaseClass):
 2. Multi-level inheritance: Grandpa ---> Parent ---> child (Vehicle ---> Bus ---> AC Bus) (Vehicle ---> Truck ---> PickupTruck)
 
 3. Multiple inheritance: Students (Family, School, Sports)
+
+4. Hybrid: Grandpa ---> Father, Uncle, Aunt ---> Child (Father, Uncle)
 """
