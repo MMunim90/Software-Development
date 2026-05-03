@@ -1,0 +1,64 @@
+What is "this" ❓ 
+
+C++-এ this keyword কী? কেন এটি এত গুরুত্বপূর্ণ?
+
+C++ প্রোগ্রামিংয়ে this keyword হলো একটি বিশেষ pointer, যা বর্তমান object-কে নির্দেশ করে। সহজভাবে বললে, যখন আপনি একটি class-এর ভিতরে কোনো function লিখেন, তখন this সেই object-এর address ধরে রাখে যে object টি, function-টিকে call করেছে।
+
+🔹 কেন this ব্যবহার করা হয়?
+
+👉 1. Same নামের variable আলাদা করতে
+যখন local variable আর class member variable-এর নাম একই হয়, তখন this ব্যবহার করে পরিষ্কারভাবে member variable-কে বোঝানো যায়।
+
+class Person {
+public: 
+  string name; <------------------------------- class member variable
+  Person(string name) { <--------------------- local variable
+    this->name = name;
+  }
+};
+
+
+
+
+👉 2. Current object return করতে (method chaining)
+this return করলে একই object-এ একাধিক function chain করে call করা যায়।
+
+যেমন:  এই function call গুলি,
+obj.setName("Munim");
+obj.setAge(22);
+obj.show();
+
+একে লেখা যায় এইভাবে,  👉  obj.setName("Munim").setAge(22).show();
+
+
+
+
+
+👉 3. Object নিজেকে reference করা
+কোনো function-এর ভিতরে নিজের object-এর address (memory location) দরকার হলে, তখন this ব্যবহার করা হয়।
+যেমন:
+
+Person p;
+
+এখানে p একটা object।
+ এই object-এর একটা address আছে (যেমন: 0x1234)
+👉 this pointer ওই address-টাই ধরে রাখে, যখন object-এর ভিতরের function call করা হয়।
+
+
+কেন নিজের object-এর address বা memory location দরকার হয়?
+
+কিছু situation আছে যেখানে object-এর address দরকার হয়।
+যেমন: Object compare করতে
+
+bool isSame(Person* other) {
+    return this == other;
+}
+
+👉 এখানে check করা হচ্ছে:
+ এই object (this) আর অন্য object (other) কি same কিনা?
+
+
+• this সবসময় pointer (object_address) হিসেবে কাজ করে
+• এটি শুধুমাত্র non-static member function-এর ভিতরে ব্যবহার করা যায়
+
+this keyword, code-কে আরও clean, readable এবং powerful করে তোলে—বিশেষ করে যখন object-oriented programming নিয়ে কাজ করা হয়।

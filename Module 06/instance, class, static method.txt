@@ -1,0 +1,110 @@
+
+## 1. instance method
+
+এটাই সবচেয়ে common method
+
+* প্রথম parameter থাকে  self
+* এটা object (instance)-এর data নিয়ে কাজ করে
+* object তৈরি করে call করতে হয়
+
+## example
+
+class Student:
+    def __init__(self, name):
+        self.name = name
+
+    def show(self):
+        print(self.name)
+
+
+s = Student("Munim")
+s.show()
+
+
+এখানে:
+
+* self.name object অনুযায়ী আলাদা হবে
+* প্রতিটা object-এর আলাদা data থাকে
+
+
+
+## 2. classmethod
+
+* প্রথম parameter থাকে cls
+* cls মানে class নিজেই
+* class-level data modify করতে use হয়
+* object ছাড়াও call করা যায়
+
+## example
+
+class Student:
+    school = "ABC School"
+
+    @classmethod
+    def change_school(cls, name):
+        cls.school = name
+
+
+Student.change_school("XYZ School")
+print(Student.school)
+
+
+এখানে:
+
+* সব object-এর জন্য school change হয়ে যাবে
+* কারণ এটা class data
+
+
+## 3. staticmethod
+
+* না self, না cls
+* class বা object-এর data use করে না
+* শুধু logical/utility function
+
+## example
+
+class Math:
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+
+print(Math.add(3, 5))
+
+এখানে:
+
+* এটা completely independent function
+* শুধু class-এর ভিতরে organize করে রাখা হয়েছে
+
+
+
+## Difference ->
+
+* instance method → self নিয়ে object data নিয়ে কাজ করে
+* classmethod → cls নিয়ে class data নিয়ে কাজ করে
+* staticmethod → কোনো data নেয় না, independent function
+
+
+
+* instance method → object এর সাথে কাজ
+* classmethod → class এর সাথে কাজ
+* staticmethod → শুধু logic, কোনো dependency নেই
+
+
+
+* instance method → একজন student-এর info
+* classmethod → পুরো school-এর rule change
+* staticmethod → শুধু calculation, কারো সাথে related না
+
+
+
+decorator ->
+
+* instance method → কোনো decorator লাগে না, self parameter থাকলেই Python বুঝে নেয়
+* classmethod → @classmethod cls parameter
+* staticmethod → @staticmethod
+
+
+
+
+

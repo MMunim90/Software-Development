@@ -1,0 +1,116 @@
+## 🔹 Abstract Base Class (ABC) কী?
+
+👉 Abstract Base Class হলো এমন একটা class:
+
+* যে class নিজে থেকে object বানাতে দেয় না
+* অন্য class-গুলোর জন্য structure / rule define করে
+* বলে দেয়: “এই methodগুলো তোমাকে must implement করতেই হবে”
+
+Python-এ এটা বানাতে ব্যবহার করা হয় 👉 abc module
+=> from abc import ABC
+
+
+## 🔹 Abstract Method কী?
+
+👉 Abstract method হলো এমন method:
+
+* যার শুধু নাম (declaration) থাকে
+* কিন্তু ভিতরে implementation থাকে না
+* child class-কে এটা implement করতে বাধ্য করে
+
+
+
+## 🔹 Basic Structure
+
+
+from abc import ABC, abstractmethod
+
+class Animal(ABC):   # Abstract Base Class
+    
+    @abstractmethod
+    def sound(self):
+        pass
+
+
+👉 এখানে:
+
+* Animal → abstract class
+* sound() → abstract method
+
+
+## 🔹 কীভাবে কাজ করে (Step-by-step)
+
+## 1. Abstract class define করা হয়
+
+class Animal(ABC):
+
+## 2. Abstract method define করা হয়
+
+@abstractmethod
+def sound(self):
+    pass
+
+👉 child class-কে বাধ্য করে এই method লিখতে
+
+## 3. Child class implement করে
+
+class Dog(Animal):
+    def sound(self):
+        return "Bark"
+
+
+## 4. Object create
+
+d = Dog()
+print(d.sound())   # Bark
+
+
+## 🔹 যদি implement না করা হয়?
+
+class Cat(Animal):
+    pass
+
+c = Cat()   # ❌ error
+
+👉 Error:
+
+❌ TypeError: Can't instantiate abstract class
+
+👉 কারণ sound() implement করা হয়নি
+
+
+## 🔹Rules
+
+## ✔️ Rule 1: Abstract class থেকে object বানানো যায় না
+
+a = Animal()   # ❌
+
+## ✔️ Rule 2: সব abstract method implement করতেই হবে
+
+না করলে child class object বানাতে পারবে না
+
+### ✔️ Rule 3: Abstract class-এ normal method থাকতে পারে
+
+class Animal(ABC):
+    
+    @abstractmethod
+    def sound(self):
+        pass
+    
+    def sleep(self):   # normal method
+        print("Sleeping...")
+
+
+## 🔹 কেন ব্যবহার করা হয়?
+
+## ✔️ 1. Code consistency
+
+সব child class একই structure follow করে
+
+## ✔️ 2. Error prevent
+
+ভুলে method না লিখলে immediately error দিবে
+
+## ✔️ 3. Large project-এ helpful
+
+team work-এ সবাই একই rule follow করে

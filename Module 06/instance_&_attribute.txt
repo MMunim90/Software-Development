@@ -19,7 +19,7 @@ class Person:
 👉 এখানে Person হলো class (design)
 
 
-### 🔸instance তৈরি করি
+## 🔸instance তৈরি করি
 
 p1 = Person("Munim")
 p2 = Person("Rahim")
@@ -29,9 +29,6 @@ p2 = Person("Rahim")
 
 * p1 = Person class এর instance
 * p2 = আরেকটা instance
-
-
-## 🔹 এখানে
 
 👉 Person("Munim") call করলে:
 
@@ -74,176 +71,139 @@ True
 👉 এক class থেকে অনেক instance বানানো যায়
 👉 প্রতিটা instance আলাদা data রাখতে পারে
 
----
 
 ## 🔹 এক লাইনে
 
 👉 instance = class থেকে তৈরি করা real object
 
----
-
-চাও হলে আমি `__init__`, `self`, attribute এগুলোও fully clear করে দিতে পারি 👍
 
 
-
-চল **attribute** conceptটা একদম clearভাবে বুঝি 👇
-
----
+---------------------------------------------------------------------------
 
 ## 🔹 Attribute কী?
 
-👉 **attribute মানে object বা class-এর ভেতরের data (variable)**
+👉 attribute মানে object বা class-এর ভেতরের data (variable)
 
 👉 সহজভাবে:
 
-```text
 attribute = object-এর property / data
-```
 
----
 
-## 🔹 Example দিয়ে বুঝো
+## 🔹 Example
 
-```python
 class Person:
     def __init__(self, name, age):
         self.name = name
         self.age = age
-```
+
 
 👉 এখানে:
 
-* `name` এবং `age` হলো **attribute**
-
----
+name এবং age হলো  attribute
 
 ## 🔹 Instance তৈরি
 
-```python
 p1 = Person("Munim", 22)
-```
 
 👉 এখন:
 
-* `p1.name` → "Munim"
-* `p1.age` → 22
+* p1.name → "Munim"
+* p1.age → 22
 
----
+
 
 ## 🔹 Attribute access করা
 
-```python
+
 print(p1.name)   # Munim
 print(p1.age)    # 22
-```
 
----
+
 
 ## 🔹 Attribute change করা
 
-```python
+
 p1.age = 25
 print(p1.age)   # 25
-```
 
-👉 attribute change করা যায় (mutable)
 
----
+👉 attribute mutable -> change করা যায় 
+
+
 
 ## 🔹 Attribute এর type
 
-### 🔸 1. Instance Attribute
+
+## 🔸 1. Instance Attribute
 
 👉 object-specific
 
-```python
 class Person:
     def __init__(self, name):
         self.name = name   # instance attribute
-```
 
-👉 `p1.name`, `p2.name` আলাদা হতে পারে
 
----
+👉 p1.name, p2.name আলাদা হতে পারে
 
-### 🔸 2. Class Attribute
+
+
+## 🔸 2. Class Attribute
 
 👉 class level-এ define করা
 
-```python
 class Person:
     species = "Human"   # class attribute
-```
+
 
 👉 সব instance এটা share করে
 
-```python
 p1 = Person()
 p2 = Person()
 
 print(p1.species)  # Human
 print(p2.species)  # Human
-```
 
----
+
 
 ## 🔹 Real-life analogy
-
-👉 ধরো:
 
 * class = Student
 * attribute = name, id, marks
 
 👉 Student object:
 
-```text
 name = Munim  
 id = 101  
 marks = 85
-```
 
----
 
 ## 🔹 Attribute vs Variable
 
 👉 attribute = object-এর ভেতরের variable
 
-```python
 self.name
-```
 
-👉 এখানে `name` হলো attribute
+👉 এখানে name হলো attribute
 
----
 
 ## 🔹 এক লাইনে
 
 👉 attribute = object-এর ভিতরের data
 
----
-
 ## 🔹 Extra (advanced)
 
-👉 তুমি attribute check করতে পারো:
+👉 attribute check:
 
-```python
 hasattr(p1, "name")   # True
-```
 
-👉 attribute add করতেও পারো:
+👉 attribute add:
 
-```python
 p1.city = "Dhaka"
-```
 
----
-
-## 🔹 Final understanding
+## 🔹 Finally ->
 
 👉 class → structure
 👉 instance → object
 👉 attribute → data inside object
 
----
 
-চাও হলে আমি method vs attribute difference একদম clear করে দিতে পারি 👍

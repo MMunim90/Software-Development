@@ -1,0 +1,96 @@
+
+decorator আসলে একটা function, যা অন্য function-এর behavior modify করে—মানে function-টা না বদলিয়ে তার উপর extra কাজ যোগ করে।
+
+
+👉 decorator = function-এর উপর wrapper
+
+মানে:
+
+* তুমি একটা function লিখেছো
+* decorator সেটার আগে বা পরে কিছু extra কাজ করে
+
+
+
+## 🔹 real-life analogy
+
+ধরো তুমি একটা চা বানালে 🍵
+
+👉 decorator হলো:
+
+* চায়ের সাথে চিনি, দুধ add করা
+
+👉 মূল function = চা
+👉 decorator = extra add-on
+
+
+
+## 🔹 basic example
+
+def my_decorator(func):
+    def wrapper():                  # output
+        print("Before function")    Befoere function
+        func()                      hello
+        print("After function")     After function
+    return wrapper
+
+
+
+## 🔹 decorator ব্যবহার
+
+@my_decorator
+def say_hello():
+    print("Hello")
+
+say_hello()
+
+
+## 🔹 output
+
+Before function
+Hello
+After function
+
+
+* original function শুধু "Hello" print করত
+* decorator add করল before/after message
+
+
+
+## 🔹 কীভাবে কাজ করে?
+
+@my_decorator
+def say_hello():
+
+
+👉 এটা আসলে internally হয়:
+
+say_hello = my_decorator(say_hello)
+
+
+
+🔹 কেন decorator use করি?
+
+1. code repeat কমাতে
+
+একই logic বারবার লিখতে হয় না
+
+2. clean code রাখার জন্য
+
+main logic আলাদা থাকে, extra logic আলাদা
+
+3. easily modify behavior
+
+function change না করেই behavior change করা যায়
+
+4. real use cases
+logging (কে কখন function call করলো)
+timing (function কত সময় নিল)
+authentication (user valid কিনা check)
+caching (result save রাখা)
+
+
+
+* decorator = function কে modify করার clean way
+* function-এর উপর extra behavior add করে
+* @ syntax দিয়ে ব্যবহার করা হয়
+
