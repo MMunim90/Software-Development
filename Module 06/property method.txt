@@ -1,0 +1,194 @@
+## 🔹 প্রথমে problem বুঝি, মূল সমস্যা (without @property)
+
+ধরো তুমি একটা class লিখেছো:
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+
+ব্যবহার:
+
+p = Person("Munim")
+print(p.name) -------------(উদাহরণ 1)
+
+
+👉 এখানে  name সরাসরি access হচ্ছে
+👉 তুমি এটাকে control করতে পারছো না
+
+
+## 🔹 কিন্তু তাতে সমস্যা কি?
+
+ধরো তুমি future-এ চাইলে:
+
+👉 name print করার আগে একটু modify করবে
+* বা invalid value block করবে
+
+👉 কিন্তু এখন direct variable, তাই control নেই ❌
+
+
+ধরো name কে uppercase করবে
+তখন তোমাকে function বানাতে হবে:
+
+
+def get_name(self):
+    return self.name.upper()
+
+
+👉 এখন call করতে হবে:
+
+p.get_name() -----------------(উদাহরণ 2)
+
+
+❌ এটা একটু lengthy লাগে (আগে ছিল  => p.name)
+
+
+
+## 🔹 এখানেই  @property decorator নিজের কাধে দায়িত্ব তুলে নেয়
+
+@property decorator use করলে:
+
+👉 function লিখেও variable এর মতো use করতে পারা যায় (this is the main line you should remember)
+
+
+## 🔹 simple example (and এখন আমরা variable কে “control সহ  access” করবো)
+
+class Person:
+    def __init__(self, name):
+        self._name = name   # internal variable
+
+    @property
+    def name(self):
+        return self._name.upper()
+
+
+## 🔹 এখন use করো
+
+p = Person("munim")
+print(p.name)
+
+👉 output: MUNIM
+
+
+👉 কিন্তু তুমি call করছো  p.name
+👉 function call করছো না 😮 ( internally function call হচ্ছে )
+
+
+## 🔹 এখানে আসল change কী?
+
+👉 আগে (প্রথম উদাহরণ): 
+
+p.name   # direct variable  👉 কোনো control নেই
+
+👉 এখন:
+
+p.name   # actually function call হচ্ছে  কিন্তু internally 😮
+
+
+👉 কিন্তু বুঝতেই পারছো না—clean!
+
+
+🔹 without property (old style) 
+
+def get_name(self):
+    return self._name.upper()
+
+👉 call করতে হয় (দ্বিতীয় উদাহরণ):
+
+p.get_name()
+
+
+🔹 with property (clean)
+
+p.name
+
+👉 cleaner and pythonic
+
+
+## 🔹p.name এর ভিতরে কী হচ্ছে?
+
+এইটা:
+
+@property
+def name(self):
+
+👉 Python internally এটাকে বানায়:
+
+👉 p.name → p.name() call হয়
+
+
+
+## 🔹 easy way মনে রাখো
+
+* normal function → p.name()
+* @property → p.name
+
+👉 এইটাই main magic
+
+
+
+
+## 🔹 setter দিয়ে control (value change করার জন্য)
+
+class Person:
+    def __init__(self, name):
+        self._name = name
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if len(value) < 3:
+            print("Name too short")
+        else:
+            self._name = value
+
+
+
+## 🔹 use
+
+p = Person("Munim")
+p.name = "A"      # validation হবে, Too short ❌
+p.name = "Rahim"  # valid OK ✅
+
+print(p.name)
+
+output = Rahim
+
+
+## 🔹 খুব short summary
+
+* @property → function কে variable বানায়
+* getter → value read
+* setter → value change control করে
+
+
+
+🔹 real benefit
+encapsulation maintain হয়
+future-এ logic add করা সহজ
+code clean থাকে
+
+@property → method কে attribute এর মতো use করতে দেয়
+getter/setter cleanভাবে handle করে
+
+
+
+## 🔚 এক লাইনে
+
+👉 @property = function কে variable এর মতো use করার shortcut
+
+
+
+## 🔚 final clear picture
+
+👉 তুমি বাইরে থেকে লিখছো:
+
+p.name
+
+👉 কিন্তু ভিতরে actually:
+
+* getter function call হচ্ছে
+* setter function run হচ্ছে

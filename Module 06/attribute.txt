@@ -1,0 +1,141 @@
+## 🔹 Attribute কী?
+
+👉 attribute মানে object বা class-এর ভেতরের data (variable)
+
+👉 সহজভাবে:
+
+attribute = object-এর property / data
+
+
+## 🔹 Example
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+👉 এখানে:
+
+name এবং age হলো  attribute
+
+## 🔹 Instance তৈরি
+
+p1 = Person("Munim", 22)
+
+👉 এখন:
+
+* p1.name → "Munim"
+* p1.age → 22
+
+
+
+## 🔹 Attribute access করা
+
+
+print(p1.name)   # Munim
+print(p1.age)    # 22
+
+
+
+## 🔹 Attribute change করা
+
+
+p1.age = 25
+print(p1.age)   # 25
+
+
+👉 attribute mutable -> change করা যায় 
+
+
+
+## 🔹 Attribute এর type
+
+
+## 🔸 1. Instance Attribute
+
+👉 object-specific
+
+class Person:
+    def __init__(self, name):
+        self.name = name   # instance attribute
+
+👉 p1.name, p2.name আলাদা হতে পারে
+
+p1 = Person("Munim")
+p2 = Person("Rahim")
+
+print(p1.name)  # Munim
+print(p2.name)  # Rahim
+
+
+
+## 🔸 2. Class Attribute
+
+👉 class level-এ define করা
+
+class Person:
+    species = "Human"   # class attribute
+    def __init__(self, name):
+        self.name = name   # instance attribute
+
+
+👉 সব instance, object "species" share করে, same for all instance
+
+p1 = Person()
+p2 = Person()
+
+print(p1.species)  # Human
+print(p2.species)  # Human
+
+
+
+## 🔹 Real-life analogy
+
+* class = Student
+* attribute = name, id, marks
+
+## 🔹 Attribute vs Variable
+
+| বিষয়        | Variable     | Attribute              |
+| ----------  | ------------ | ---------------------  |
+| কোথায় থাকে | general code | class/object-এর ভিতরে  |
+| access      | সরাসরি       | object/class দিয়ে       |
+| example     | `x = 10`     | `p.name`               |
+
+
+👉 method-ও attribute হিসেবে count হয়
+
+
+## 🔹 এক লাইনে
+
+👉 attribute = object-এর ভিতরের data
+
+## 🔹 Extra (advanced)
+
+👉 attribute check:
+
+hasattr(p1, "name")   # True
+
+🔹 কী করছে?
+
+👉 এটা check করে:
+
+object p1 এর মধ্যে "name" নামে কোনো attribute (property/variable/method) আছে কিনা
+
+🔹 result কী দেয়?
+
+👉 return করে:
+
+True → যদি attribute থাকে
+False → যদি না থাকে
+
+👉 attribute add:
+
+p1.city = "Dhaka"
+
+## 🔹 Finally ->
+
+👉 class → structure
+👉 instance → object
+👉 attribute → data inside object

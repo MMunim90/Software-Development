@@ -4,13 +4,11 @@
 
 👉 সহজভাবে:
 
-text
 class = design / blueprint  
 instance = real object
 
 
 ## 🔹 Example 
-
 
 class Person:
     def __init__(self, name):
@@ -50,9 +48,10 @@ p1 → instance of Person
 
 ## 🔹 Real-life analogy
 
-👉 class = car design
-👉 instance = actual car 🚗
+👉 class = car design, home architectural design
+👉 instance = actual car 🚗,  Real Building
 
+Example: 
 * Toyota design → class
 * Real Toyota car → instance
 
@@ -62,7 +61,6 @@ p1 → instance of Person
 print(isinstance(p1, Person))
 
 👉 Output:
-
 True
 
 
@@ -75,135 +73,3 @@ True
 ## 🔹 এক লাইনে
 
 👉 instance = class থেকে তৈরি করা real object
-
-
-
----------------------------------------------------------------------------
-
-## 🔹 Attribute কী?
-
-👉 attribute মানে object বা class-এর ভেতরের data (variable)
-
-👉 সহজভাবে:
-
-attribute = object-এর property / data
-
-
-## 🔹 Example
-
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-
-👉 এখানে:
-
-name এবং age হলো  attribute
-
-## 🔹 Instance তৈরি
-
-p1 = Person("Munim", 22)
-
-👉 এখন:
-
-* p1.name → "Munim"
-* p1.age → 22
-
-
-
-## 🔹 Attribute access করা
-
-
-print(p1.name)   # Munim
-print(p1.age)    # 22
-
-
-
-## 🔹 Attribute change করা
-
-
-p1.age = 25
-print(p1.age)   # 25
-
-
-👉 attribute mutable -> change করা যায় 
-
-
-
-## 🔹 Attribute এর type
-
-
-## 🔸 1. Instance Attribute
-
-👉 object-specific
-
-class Person:
-    def __init__(self, name):
-        self.name = name   # instance attribute
-
-
-👉 p1.name, p2.name আলাদা হতে পারে
-
-
-
-## 🔸 2. Class Attribute
-
-👉 class level-এ define করা
-
-class Person:
-    species = "Human"   # class attribute
-
-
-👉 সব instance এটা share করে
-
-p1 = Person()
-p2 = Person()
-
-print(p1.species)  # Human
-print(p2.species)  # Human
-
-
-
-## 🔹 Real-life analogy
-
-* class = Student
-* attribute = name, id, marks
-
-👉 Student object:
-
-name = Munim  
-id = 101  
-marks = 85
-
-
-## 🔹 Attribute vs Variable
-
-👉 attribute = object-এর ভেতরের variable
-
-self.name
-
-👉 এখানে name হলো attribute
-
-
-## 🔹 এক লাইনে
-
-👉 attribute = object-এর ভিতরের data
-
-## 🔹 Extra (advanced)
-
-👉 attribute check:
-
-hasattr(p1, "name")   # True
-
-👉 attribute add:
-
-p1.city = "Dhaka"
-
-## 🔹 Finally ->
-
-👉 class → structure
-👉 instance → object
-👉 attribute → data inside object
-
-
